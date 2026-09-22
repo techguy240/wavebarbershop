@@ -13,6 +13,7 @@ import { supabase } from "@/integrations/supabase/client";
 const loginSchema = z.object({
   email: z.string().trim().email("Email non valida").max(255),
   password: z.string().min(8, "Minimo 8 caratteri").max(128),
+  remember: z.boolean(),
 });
 
 const registerSchema = loginSchema.extend({
