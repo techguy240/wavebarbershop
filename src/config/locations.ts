@@ -1,5 +1,6 @@
 import type { LocationId } from "./site";
 import { images, type SiteImage } from "./images";
+import { services, type Service } from "./services";
 
 /** 0 = domenica … 6 = sabato (come Date.getDay()). */
 export interface DayHours {
@@ -7,15 +8,6 @@ export interface DayHours {
   /** null = chiuso */
   open: string | null;
   close: string | null;
-}
-
-export interface Service {
-  id: string;
-  name: string;
-  description: string;
-  /** Prezzo non fornito: da configurare. Se vuoto viene mostrato "Su richiesta". */
-  price: string;
-  icon: "scissors" | "razor" | "bottle" | "sparkles";
 }
 
 export interface StaffMember {
@@ -85,36 +77,7 @@ export const locations: Record<LocationId, Location> = {
       { day: 6, open: "09:00", close: "20:00" },
     ],
     hoursLabel: ["Lun – Sab: 09:00 – 20:00", "Domenica: chiuso"],
-    services: [
-      {
-        id: "taglio",
-        name: "Taglio capelli",
-        description: "Taglio personalizzato, dal classico al contemporaneo.",
-        price: "",
-        icon: "scissors",
-      },
-      {
-        id: "barba",
-        name: "Cura e regolazione barba",
-        description: "Definizione, regolazione e rifinitura della barba.",
-        price: "",
-        icon: "razor",
-      },
-      {
-        id: "prodotti",
-        name: "Prodotti per capelli e barba",
-        description: "Selezione di prodotti professionali disponibili in sede.",
-        price: "",
-        icon: "bottle",
-      },
-      {
-        id: "trattamenti",
-        name: "Trattamenti",
-        description: "Trattamenti dedicati a capelli e cute.",
-        price: "",
-        icon: "sparkles",
-      },
-    ],
+    services,
     staffIds: ["nicco", "luca", "martino"],
     reviews: { rating: 5.0, count: 15, source: "Google", url: "" },
     images: images.cecina,
@@ -141,36 +104,7 @@ export const locations: Record<LocationId, Location> = {
       { day: 6, open: "08:00", close: "17:00" },
     ],
     hoursLabel: ["Mar – Ven: 08:00 – 19:00", "Sabato: 08:00 – 17:00", "Lunedì e Domenica: chiuso"],
-    services: [
-      {
-        id: "rasatura",
-        name: "Rasatura e modellatura barba",
-        description: "Rasatura tradizionale e modellatura della barba.",
-        price: "",
-        icon: "razor",
-      },
-      {
-        id: "classico",
-        name: "Tagli classici forbice e pettine",
-        description: "Tecnica classica a forbice e pettine.",
-        price: "",
-        icon: "scissors",
-      },
-      {
-        id: "sfumatura",
-        name: "Sfumatura moderna con hair clipper",
-        description: "Sfumature precise realizzate a macchinetta.",
-        price: "",
-        icon: "sparkles",
-      },
-      {
-        id: "prodotti",
-        name: "Prodotti per la cura di barba e capelli",
-        description: "Prodotti professionali per la cura quotidiana.",
-        price: "",
-        icon: "bottle",
-      },
-    ],
+    services,
     staffIds: ["nicco", "luigi"],
     reviews: { rating: 4.9, count: 23, source: "Google", url: "" },
     images: images.volterra,

@@ -4,17 +4,15 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { toast } from "sonner";
-import { CalendarDays, LogOut, UserRound, ExternalLink } from "lucide-react";
+import { CalendarDays, LogOut, UserRound } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { SectionHeading } from "@/components/site/SectionHeading";
 import { BookButton } from "@/components/site/BookButton";
-import { DemoNotice } from "@/components/site/DemoNotice";
-import { LoadingState, EmptyState } from "@/components/site/States";
+import { LoadingState } from "@/components/site/States";
 import { useAuth } from "@/hooks/useAuth";
 import { supabase } from "@/integrations/supabase/client";
-import { getBookingUrl, isConfigured } from "@/config";
 import { pageMeta } from "@/lib/seo";
 
 export const Route = createFileRoute("/account")({
@@ -42,8 +40,6 @@ function AccountPage() {
 
   if (auth.loading || !auth.isAuthenticated) return <LoadingState label="Caricamento account…" className="min-h-[50vh]" />;
 
-  const bookingUrl = getBookingUrl();
-
   return (
     <section className="container-site py-12 sm:py-20">
       <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
@@ -67,24 +63,9 @@ function AccountPage() {
             <CalendarDays className="size-5 text-gold" aria-hidden="true" />
             Le mie prenotazioni
           </h2>
-          <p className="mt-2 text-sm text-muted-foreground">Le prenotazioni sono gestite dal sistema ufficiale WaveBarbershop.</p>
+          <p className="mt-2 text-sm text-muted-foreground">Per prenotare online, scarica l'app ufficiale WaveBarbershop.</p>
           <div className="mt-5">
-            {isConfigured(bookingUrl) ? (
-              <Button asChild>
-                <a href={bookingUrl} target="_blank" rel="noopener noreferrer">
-                  Gestisci prenotazioni
-                  <ExternalLink aria-hidden="true" />
-                </a>
-              </Button>
-            ) : (
-              <EmptyState
-                title="Nessuna prenotazione da mostrare"
-                description="Il collegamento al sistema di prenotazione non è ancora attivo."
-                action={<BookButton size="sm" />}
-                className="border-dashed shadow-none"
-              />
-            )}
-            {!isConfigured(bookingUrl) && <DemoNotice className="mt-3">Sistema di prenotazione da collegare in configurazione.</DemoNotice>}
+            <BookButton size="sm" label="PRENOTA TRAMITE L'APP" />
           </div>
         </article>
 

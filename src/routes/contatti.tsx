@@ -25,7 +25,7 @@ function ContattiPage() {
   return (
     <>
       <section className="container-site pt-12 sm:pt-20">
-        <SectionHeading as="h1" eyebrow="Contatti" title="Parliamone" description="Chiamaci o passa a trovarci. Per gli appuntamenti usa la prenotazione online." />
+        <SectionHeading as="h1" eyebrow="Contatti" title="Parliamone" description="Chiamaci o passa a trovarci. Per gli appuntamenti usa l'app ufficiale WaveBarbershop." />
         <div className="mt-6 flex flex-wrap gap-3">
           <BookButton size="lg" />
           {isConfigured(siteConfig.email) ? (

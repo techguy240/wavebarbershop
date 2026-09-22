@@ -12,8 +12,7 @@ interface Props extends Omit<ButtonProps, "onClick"> {
 }
 
 /**
- * CTA "Prenota ora": apre il selettore sede e reindirizza al sistema
- * di prenotazione ufficiale configurato in src/config/site.ts.
+ * CTA "Prenota ora": presenta l'app ufficiale e la prenotazione telefonica.
  */
 export function BookButton({ locationId, label = siteConfig.booking.label, withIcon = true, ...props }: Props) {
   const [open, setOpen] = useState(false);

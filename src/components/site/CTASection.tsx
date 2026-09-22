@@ -16,7 +16,7 @@ export function CTASection() {
             Pronto per un nuovo look?
           </h2>
           <p className="mx-auto mt-4 max-w-md text-muted-foreground">
-            Prenota online oppure chiama direttamente la sede più vicina a te.
+            Prenota online tramite l'app ufficiale oppure chiama direttamente la sede più vicina a te.
           </p>
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <BookButton size="xl" className="w-full sm:w-auto" />

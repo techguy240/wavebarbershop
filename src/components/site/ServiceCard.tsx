@@ -1,11 +1,9 @@
-import { Scissors, Sparkles, FlaskConical, SquarePen } from "lucide-react";
+import { Clock, Scissors, Sparkles, SquarePen } from "lucide-react";
 import type { Service } from "@/config";
-import { isConfigured } from "@/config";
 
 const icons = {
   scissors: Scissors,
   razor: SquarePen,
-  bottle: FlaskConical,
   sparkles: Sparkles,
 };
 
@@ -21,11 +19,14 @@ export function ServiceCard({ service, index = 0 }: { service: Service; index?: 
       </div>
       <div className="flex-1">
         <h3 className="font-display text-lg font-semibold">{service.name}</h3>
-        <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{service.description}</p>
       </div>
-      <p className="text-xs font-medium uppercase tracking-widest text-gold/80">
-        {isConfigured(service.price) ? service.price : "Prezzo su richiesta"}
-      </p>
+      <div className="flex items-center justify-between gap-4 text-sm">
+        <p className="font-display font-semibold text-gold">{service.price}</p>
+        <p className="flex items-center gap-1.5 text-muted-foreground">
+          <Clock className="size-4" aria-hidden="true" />
+          {service.durationMinutes} minuti
+        </p>
+      </div>
     </article>
   );
 }
