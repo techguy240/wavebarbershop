@@ -13,6 +13,7 @@ import { useState } from "react";
 /** Accesso ospite: nessun account, dati salvati solo nel browser per la sessione corrente. */
 export function GuestForm() {
   const navigate = useNavigate();
+  const [remember, setRememberChoice] = useState(true);
   const form = useForm<z.infer<typeof guestSchema>>({
     resolver: zodResolver(guestSchema),
     defaultValues: { firstName: "", lastName: "", phone: "" },
