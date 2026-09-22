@@ -19,6 +19,7 @@ export function GuestForm() {
   });
 
   const onSubmit = form.handleSubmit((v) => {
+    setRemember(remember);
     setGuestSession(v);
     toast.success(`Benvenuto, ${v.firstName}!`);
     navigate({ to: "/account" });
