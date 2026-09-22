@@ -10,7 +10,7 @@ import { HoursTable } from "@/components/site/HoursTable";
 import { MapCard } from "@/components/site/MapCard";
 import { Gallery } from "@/components/site/Gallery";
 import { SectionHeading } from "@/components/site/SectionHeading";
-import { fullAddress, getLocation, getStaffForLocation } from "@/config";
+import { fullAddress, getLocation, getStaffForLocation, services } from "@/config";
 import { telHref } from "@/lib/links";
 import { pageMeta } from "@/lib/seo";
 import { barberShopSchema } from "@/lib/schema";
@@ -68,9 +68,13 @@ function LocationPage() {
       <section className="container-site grid gap-6 py-12 lg:grid-cols-[1fr_380px]">
         <div className="space-y-12">
           <div>
-            <SectionHeading eyebrow="Servizi" title={`Servizi a ${l.city}`} />
+            <SectionHeading
+              eyebrow="Servizi"
+              title="Catalogo WaveBarbershop"
+              description={`Per informazioni sui servizi disponibili nella sede di ${l.city}, contattaci.`}
+            />
             <div className="mt-8 grid gap-4 sm:grid-cols-2">
-              {l.services.map((s, i) => (
+              {services.map((s, i) => (
                 <ServiceCard key={s.id} service={s} index={i} />
               ))}
             </div>

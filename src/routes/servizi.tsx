@@ -10,7 +10,7 @@ export const Route = createFileRoute("/servizi")({
   head: () =>
     pageMeta({
       title: "Servizi",
-      description: "Taglio capelli, cura della barba, rasatura, sfumature e trattamenti nelle sedi WaveBarbershop di Cecina e Volterra.",
+      description: "Servizi WaveBarbershop: barba, taglio capelli con o senza shampoo, barba e capelli, decolorazione-colore.",
       path: "/servizi",
     }),
   component: ServiziPage,
