@@ -10,33 +10,219 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AccountRouteImport } from './routes/account'
+import { Route as ContattiRouteImport } from './routes/contatti'
+import { Route as CookiePolicyRouteImport } from './routes/cookie-policy'
+import { Route as GalleryRouteImport } from './routes/gallery'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as RecensioniRouteImport } from './routes/recensioni'
+import { Route as RegisterRouteImport } from './routes/register'
+import { Route as ResetPasswordRouteImport } from './routes/reset-password'
+import { Route as ServiziRouteImport } from './routes/servizi'
+import { Route as StaffRouteImport } from './routes/staff'
+import { Route as TerminiRouteImport } from './routes/termini'
+import { Route as SediIndexRouteImport } from './routes/sedi.index'
+import { Route as SediLocationIdRouteImport } from './routes/sedi.$locationId'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AccountRoute = AccountRouteImport.update({
+  id: '/account',
+  path: '/account',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContattiRoute = ContattiRouteImport.update({
+  id: '/contatti',
+  path: '/contatti',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CookiePolicyRoute = CookiePolicyRouteImport.update({
+  id: '/cookie-policy',
+  path: '/cookie-policy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GalleryRoute = GalleryRouteImport.update({
+  id: '/gallery',
+  path: '/gallery',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RecensioniRoute = RecensioniRouteImport.update({
+  id: '/recensioni',
+  path: '/recensioni',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RegisterRoute = RegisterRouteImport.update({
+  id: '/register',
+  path: '/register',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResetPasswordRoute = ResetPasswordRouteImport.update({
+  id: '/reset-password',
+  path: '/reset-password',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServiziRoute = ServiziRouteImport.update({
+  id: '/servizi',
+  path: '/servizi',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StaffRoute = StaffRouteImport.update({
+  id: '/staff',
+  path: '/staff',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TerminiRoute = TerminiRouteImport.update({
+  id: '/termini',
+  path: '/termini',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SediIndexRoute = SediIndexRouteImport.update({
+  id: '/sedi/',
+  path: '/sedi/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SediLocationIdRoute = SediLocationIdRouteImport.update({
+  id: '/sedi/$locationId',
+  path: '/sedi/$locationId',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/account': typeof AccountRoute
+  '/contatti': typeof ContattiRoute
+  '/cookie-policy': typeof CookiePolicyRoute
+  '/gallery': typeof GalleryRoute
+  '/login': typeof LoginRoute
+  '/privacy': typeof PrivacyRoute
+  '/recensioni': typeof RecensioniRoute
+  '/register': typeof RegisterRoute
+  '/reset-password': typeof ResetPasswordRoute
+  '/servizi': typeof ServiziRoute
+  '/staff': typeof StaffRoute
+  '/termini': typeof TerminiRoute
+  '/sedi/$locationId': typeof SediLocationIdRoute
+  '/sedi/': typeof SediIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/account': typeof AccountRoute
+  '/contatti': typeof ContattiRoute
+  '/cookie-policy': typeof CookiePolicyRoute
+  '/gallery': typeof GalleryRoute
+  '/login': typeof LoginRoute
+  '/privacy': typeof PrivacyRoute
+  '/recensioni': typeof RecensioniRoute
+  '/register': typeof RegisterRoute
+  '/reset-password': typeof ResetPasswordRoute
+  '/servizi': typeof ServiziRoute
+  '/staff': typeof StaffRoute
+  '/termini': typeof TerminiRoute
+  '/sedi/$locationId': typeof SediLocationIdRoute
+  '/sedi': typeof SediIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/account': typeof AccountRoute
+  '/contatti': typeof ContattiRoute
+  '/cookie-policy': typeof CookiePolicyRoute
+  '/gallery': typeof GalleryRoute
+  '/login': typeof LoginRoute
+  '/privacy': typeof PrivacyRoute
+  '/recensioni': typeof RecensioniRoute
+  '/register': typeof RegisterRoute
+  '/reset-password': typeof ResetPasswordRoute
+  '/servizi': typeof ServiziRoute
+  '/staff': typeof StaffRoute
+  '/termini': typeof TerminiRoute
+  '/sedi/$locationId': typeof SediLocationIdRoute
+  '/sedi/': typeof SediIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/account'
+    | '/contatti'
+    | '/cookie-policy'
+    | '/gallery'
+    | '/login'
+    | '/privacy'
+    | '/recensioni'
+    | '/register'
+    | '/reset-password'
+    | '/servizi'
+    | '/staff'
+    | '/termini'
+    | '/sedi/$locationId'
+    | '/sedi/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/account'
+    | '/contatti'
+    | '/cookie-policy'
+    | '/gallery'
+    | '/login'
+    | '/privacy'
+    | '/recensioni'
+    | '/register'
+    | '/reset-password'
+    | '/servizi'
+    | '/staff'
+    | '/termini'
+    | '/sedi/$locationId'
+    | '/sedi'
+  id:
+    | '__root__'
+    | '/'
+    | '/account'
+    | '/contatti'
+    | '/cookie-policy'
+    | '/gallery'
+    | '/login'
+    | '/privacy'
+    | '/recensioni'
+    | '/register'
+    | '/reset-password'
+    | '/servizi'
+    | '/staff'
+    | '/termini'
+    | '/sedi/$locationId'
+    | '/sedi/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AccountRoute: typeof AccountRoute
+  ContattiRoute: typeof ContattiRoute
+  CookiePolicyRoute: typeof CookiePolicyRoute
+  GalleryRoute: typeof GalleryRoute
+  LoginRoute: typeof LoginRoute
+  PrivacyRoute: typeof PrivacyRoute
+  RecensioniRoute: typeof RecensioniRoute
+  RegisterRoute: typeof RegisterRoute
+  ResetPasswordRoute: typeof ResetPasswordRoute
+  ServiziRoute: typeof ServiziRoute
+  StaffRoute: typeof StaffRoute
+  TerminiRoute: typeof TerminiRoute
+  SediLocationIdRoute: typeof SediLocationIdRoute
+  SediIndexRoute: typeof SediIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +234,123 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/account': {
+      id: '/account'
+      path: '/account'
+      fullPath: '/account'
+      preLoaderRoute: typeof AccountRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contatti': {
+      id: '/contatti'
+      path: '/contatti'
+      fullPath: '/contatti'
+      preLoaderRoute: typeof ContattiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cookie-policy': {
+      id: '/cookie-policy'
+      path: '/cookie-policy'
+      fullPath: '/cookie-policy'
+      preLoaderRoute: typeof CookiePolicyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gallery': {
+      id: '/gallery'
+      path: '/gallery'
+      fullPath: '/gallery'
+      preLoaderRoute: typeof GalleryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/recensioni': {
+      id: '/recensioni'
+      path: '/recensioni'
+      fullPath: '/recensioni'
+      preLoaderRoute: typeof RecensioniRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/register': {
+      id: '/register'
+      path: '/register'
+      fullPath: '/register'
+      preLoaderRoute: typeof RegisterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reset-password': {
+      id: '/reset-password'
+      path: '/reset-password'
+      fullPath: '/reset-password'
+      preLoaderRoute: typeof ResetPasswordRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/servizi': {
+      id: '/servizi'
+      path: '/servizi'
+      fullPath: '/servizi'
+      preLoaderRoute: typeof ServiziRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/staff': {
+      id: '/staff'
+      path: '/staff'
+      fullPath: '/staff'
+      preLoaderRoute: typeof StaffRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/termini': {
+      id: '/termini'
+      path: '/termini'
+      fullPath: '/termini'
+      preLoaderRoute: typeof TerminiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sedi/': {
+      id: '/sedi/'
+      path: '/sedi'
+      fullPath: '/sedi/'
+      preLoaderRoute: typeof SediIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sedi/$locationId': {
+      id: '/sedi/$locationId'
+      path: '/sedi/$locationId'
+      fullPath: '/sedi/$locationId'
+      preLoaderRoute: typeof SediLocationIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AccountRoute: AccountRoute,
+  ContattiRoute: ContattiRoute,
+  CookiePolicyRoute: CookiePolicyRoute,
+  GalleryRoute: GalleryRoute,
+  LoginRoute: LoginRoute,
+  PrivacyRoute: PrivacyRoute,
+  RecensioniRoute: RecensioniRoute,
+  RegisterRoute: RegisterRoute,
+  ResetPasswordRoute: ResetPasswordRoute,
+  ServiziRoute: ServiziRoute,
+  StaffRoute: StaffRoute,
+  TerminiRoute: TerminiRoute,
+  SediLocationIdRoute: SediLocationIdRoute,
+  SediIndexRoute: SediIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
