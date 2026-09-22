@@ -49,8 +49,6 @@ export const siteConfig = {
   auth: {
     emailPassword: true,
     google: true,
-    /** Richiede un provider SMS configurato nel backend. */
-    phoneOtp: false,
     guest: true,
   },
 

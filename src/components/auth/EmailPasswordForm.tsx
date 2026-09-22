@@ -9,13 +9,15 @@ import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { supabase } from "@/integrations/supabase/client";
+import { setRemember } from "@/lib/remember";
 
 const loginSchema = z.object({
   email: z.string().trim().email("Email non valida").max(255),
   password: z.string().min(8, "Minimo 8 caratteri").max(128),
+  remember: z.boolean(),
 });
 
-const registerSchema = loginSchema.extend({
+const registerSchema = loginSchema.omit({ remember: true }).extend({
   firstName: z.string().trim().min(2, "Inserisci il nome").max(60),
   lastName: z.string().trim().min(2, "Inserisci il cognome").max(60),
   phone: z.string().trim().regex(/^\+?[0-9 ]{8,16}$/, "Numero non valido"),
@@ -33,11 +35,12 @@ const friendly = (msg: string) => {
 
 export function LoginForm() {
   const navigate = useNavigate();
-  const form = useForm<z.infer<typeof loginSchema>>({ resolver: zodResolver(loginSchema), defaultValues: { email: "", password: "" } });
+  const form = useForm<z.infer<typeof loginSchema>>({ resolver: zodResolver(loginSchema), defaultValues: { email: "", password: "", remember: true } });
   const [resetSent, setResetSent] = useState(false);
 
-  const onSubmit = form.handleSubmit(async (values) => {
-    const { error } = await supabase.auth.signInWithPassword(values);
+  const onSubmit = form.handleSubmit(async ({ email, password, remember }) => {
+    setRemember(remember);
+    const { error } = await supabase.auth.signInWithPassword({ email, password });
     if (error) {
       toast.error(friendly(error.message));
       return;
@@ -69,6 +72,14 @@ export function LoginForm() {
             <FormLabel>Password</FormLabel>
             <FormControl><Input type="password" autoComplete="current-password" {...field} /></FormControl>
             <FormMessage />
+          </FormItem>
+        )} />
+        <FormField control={form.control} name="remember" render={({ field }) => (
+          <FormItem>
+            <label className="flex items-start gap-3 text-xs text-muted-foreground">
+              <input type="checkbox" className="mt-0.5 size-4 accent-[var(--gold)]" checked={!!field.value} onChange={(e) => field.onChange(e.target.checked)} />
+              <span>Acconsento ad essere ricordato su questo dispositivo</span>
+            </label>
           </FormItem>
         )} />
         <div className="flex justify-end">
