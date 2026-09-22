@@ -75,7 +75,7 @@ export function useAuth(): AuthState {
   const user = session?.user ?? null;
   const displayName =
     profile?.first_name ||
-    (user?.user_metadata?.full_name as string | undefined)?.split(" ")[0] ||
+    (user?.user_metadata?.["full_name"] as string | undefined)?.split(" ")[0] ||
     user?.email?.split("@")[0] ||
     guest?.firstName ||
     "";

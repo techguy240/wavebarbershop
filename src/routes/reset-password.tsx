@@ -35,11 +35,17 @@ function ResetPasswordPage() {
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (password.length < 8) return toast.error("Minimo 8 caratteri.");
+    if (password.length < 8) {
+      toast.error("Minimo 8 caratteri.");
+      return;
+    }
     setBusy(true);
     const { error } = await supabase.auth.updateUser({ password });
     setBusy(false);
-    if (error) return toast.error("Impossibile aggiornare la password. Richiedi un nuovo link.");
+    if (error) {
+      toast.error("Impossibile aggiornare la password. Richiedi un nuovo link.");
+      return;
+    }
     toast.success("Password aggiornata.");
     navigate({ to: "/account" });
   };

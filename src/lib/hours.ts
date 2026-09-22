@@ -3,7 +3,7 @@ import type { DayHours, Location } from "@/config/locations";
 const DAY_NAMES = ["Domenica", "Lunedì", "Martedì", "Mercoledì", "Giovedì", "Venerdì", "Sabato"];
 
 const toMinutes = (hhmm: string) => {
-  const [h, m] = hhmm.split(":").map(Number);
+  const [h = 0, m = 0] = hhmm.split(":").map(Number);
   return h * 60 + m;
 };
 
@@ -50,7 +50,7 @@ export function getOpenStatus(location: Location, now = new Date()): OpenStatus 
     const d = (day + i) % 7;
     const h = location.hours.find((x) => x.day === d);
     if (h?.open) {
-      const when = i === 1 ? "domani" : DAY_NAMES[d].toLowerCase();
+      const when = i === 1 ? "domani" : (DAY_NAMES[d] ?? "").toLowerCase();
       return { isOpen: false, label: "Chiuso", detail: `Apre ${when} alle ${h.open}` };
     }
   }
@@ -61,7 +61,7 @@ export function formatDayHours(h: DayHours): string {
   return h.open && h.close ? `${h.open} – ${h.close}` : "Chiuso";
 }
 
-export const dayName = (day: number) => DAY_NAMES[day];
+export const dayName = (day: number) => DAY_NAMES[day] ?? "";
 
 /** Ordine lun → dom per la tabella orari. */
 export const weekOrder = [1, 2, 3, 4, 5, 6, 0];

@@ -16,7 +16,7 @@ import { cn } from "@/lib/utils";
 interface Props {
   open: boolean;
   onOpenChange: (open: boolean) => void;
-  preselect?: LocationId;
+  preselect?: LocationId | undefined;
 }
 
 export function LocationSelector({ open, onOpenChange, preselect }: Props) {

@@ -1,11 +1,13 @@
 import type { ReactNode } from "react";
 import { images } from "@/config";
 
+const sideImage = images.volterra[1] ?? images.hero;
+
 export function AuthShell({ eyebrow, title, description, children }: { eyebrow: string; title: string; description: string; children: ReactNode }) {
   return (
     <section className="container-site grid gap-8 py-10 lg:grid-cols-2 lg:gap-14 sm:py-16">
       <div className="relative hidden overflow-hidden rounded-3xl lg:block">
-        <img src={images.volterra[1].src} alt={images.volterra[1].alt} className="h-full min-h-[640px] w-full object-cover" />
+        <img src={sideImage.src} alt={sideImage.alt} className="h-full min-h-[640px] w-full object-cover" />
         <div className="hero-overlay absolute inset-0" aria-hidden="true" />
         <div className="absolute inset-x-8 bottom-8">
           <p className="eyebrow mb-2">Area clienti</p>

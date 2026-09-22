@@ -131,7 +131,10 @@ function ProfileForm({ auth }: { auth: ReturnType<typeof useAuth> }) {
     setSaving(true);
     const { error } = await supabase.from("profiles").upsert({ id: auth.user!.id, email: auth.user!.email ?? null, ...v });
     setSaving(false);
-    if (error) return toast.error("Salvataggio non riuscito.");
+    if (error) {
+      toast.error("Salvataggio non riuscito.");
+      return;
+    }
     await auth.refreshProfile();
     toast.success("Dati aggiornati.");
   });

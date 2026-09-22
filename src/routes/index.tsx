@@ -125,7 +125,7 @@ function Index() {
       {/* GALLERY PREVIEW */}
       <section className="container-site pb-8" aria-labelledby="gallery-title">
         <div className="grid gap-3 md:grid-cols-3">
-          {[images.cecina[1], images.volterra[0], images.cecina[2]].map((img, i) => (
+          {[images.cecina[1], images.volterra[0], images.cecina[2]].filter((x): x is NonNullable<typeof x> => !!x).map((img, i) => (
             <div key={img.src} className={i === 1 ? "md:-translate-y-6" : ""}>
               <img src={img.src} alt={img.alt} loading="lazy" className="aspect-[4/5] w-full rounded-3xl object-cover" />
             </div>

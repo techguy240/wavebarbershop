@@ -38,24 +38,34 @@ export function PhoneOtpForm() {
   const validPhone = /^\+[0-9]{9,15}$/.test(normalized);
 
   const send = async () => {
-    if (!validPhone) return toast.error("Inserisci il numero in formato internazionale (+39...).");
+    if (!validPhone) {
+      toast.error("Inserisci il numero in formato internazionale (+39...).");
+      return;
+    }
     setBusy(true);
     const { error } = await supabase.auth.signInWithOtp({ phone: normalized });
     setBusy(false);
-    if (error) return toast.error("Invio del codice non riuscito. Riprova più tardi.");
+    if (error) {
+      toast.error("Invio del codice non riuscito. Riprova più tardi.");
+      return;
+    }
     setStep("code");
     setCooldown(RESEND_SECONDS);
     setAttempts(0);
   };
 
   const verify = async () => {
-    if (attempts >= MAX_ATTEMPTS) return toast.error("Troppi tentativi. Richiedi un nuovo codice.");
+    if (attempts >= MAX_ATTEMPTS) {
+      toast.error("Troppi tentativi. Richiedi un nuovo codice.");
+      return;
+    }
     setBusy(true);
     const { error } = await supabase.auth.verifyOtp({ phone: normalized, token: code, type: "sms" });
     setBusy(false);
     if (error) {
       setAttempts((a) => a + 1);
-      return toast.error("Codice non valido o scaduto.");
+      toast.error("Codice non valido o scaduto.");
+      return;
     }
     navigate({ to: "/account" });
   };

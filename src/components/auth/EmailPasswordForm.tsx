@@ -38,7 +38,10 @@ export function LoginForm() {
 
   const onSubmit = form.handleSubmit(async (values) => {
     const { error } = await supabase.auth.signInWithPassword(values);
-    if (error) return toast.error(friendly(error.message));
+    if (error) {
+      toast.error(friendly(error.message));
+      return;
+    }
     toast.success("Bentornato!");
     navigate({ to: "/account" });
   });
@@ -103,7 +106,10 @@ export function RegisterForm() {
         data: { first_name: v.firstName, last_name: v.lastName, phone: v.phone },
       },
     });
-    if (error) return toast.error(friendly(error.message));
+    if (error) {
+      toast.error(friendly(error.message));
+      return;
+    }
     setDone(true);
   });
 
