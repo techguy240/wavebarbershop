@@ -16,7 +16,7 @@ const loginSchema = z.object({
   remember: z.boolean(),
 });
 
-const registerSchema = loginSchema.extend({
+const registerSchema = loginSchema.omit({ remember: true }).extend({
   firstName: z.string().trim().min(2, "Inserisci il nome").max(60),
   lastName: z.string().trim().min(2, "Inserisci il cognome").max(60),
   phone: z.string().trim().regex(/^\+?[0-9 ]{8,16}$/, "Numero non valido"),
@@ -34,11 +34,12 @@ const friendly = (msg: string) => {
 
 export function LoginForm() {
   const navigate = useNavigate();
-  const form = useForm<z.infer<typeof loginSchema>>({ resolver: zodResolver(loginSchema), defaultValues: { email: "", password: "" } });
+  const form = useForm<z.infer<typeof loginSchema>>({ resolver: zodResolver(loginSchema), defaultValues: { email: "", password: "", remember: true } });
   const [resetSent, setResetSent] = useState(false);
 
-  const onSubmit = form.handleSubmit(async (values) => {
-    const { error } = await supabase.auth.signInWithPassword(values);
+  const onSubmit = form.handleSubmit(async ({ email, password, remember }) => {
+    setRemember(remember);
+    const { error } = await supabase.auth.signInWithPassword({ email, password });
     if (error) {
       toast.error(friendly(error.message));
       return;
