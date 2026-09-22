@@ -3,7 +3,6 @@ import { useEffect } from "react";
 import { AuthShell, Divider } from "@/components/auth/AuthShell";
 import { GoogleButton } from "@/components/auth/GoogleButton";
 import { LoginForm } from "@/components/auth/EmailPasswordForm";
-import { PhoneOtpForm } from "@/components/auth/PhoneOtpForm";
 import { GuestForm } from "@/components/auth/GuestForm";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useAuth } from "@/hooks/useAuth";
@@ -31,13 +30,11 @@ function LoginPage() {
       <GoogleButton />
       <Divider />
       <Tabs defaultValue="email">
-        <TabsList className="grid h-auto w-full grid-cols-3 rounded-full bg-surface p-1">
+        <TabsList className="grid h-auto w-full grid-cols-2 rounded-full bg-surface p-1">
           <TabsTrigger value="email" className={tab}>Email</TabsTrigger>
-          <TabsTrigger value="sms" className={tab}>SMS</TabsTrigger>
           <TabsTrigger value="guest" className={tab}>Ospite</TabsTrigger>
         </TabsList>
         <TabsContent value="email" className="mt-6"><LoginForm /></TabsContent>
-        <TabsContent value="sms" className="mt-6"><PhoneOtpForm /></TabsContent>
         <TabsContent value="guest" className="mt-6"><GuestForm /></TabsContent>
       </Tabs>
       <p className="mt-8 text-center text-sm text-muted-foreground">
