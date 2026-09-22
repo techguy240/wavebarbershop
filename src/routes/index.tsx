@@ -7,7 +7,7 @@ import { LocationCard } from "@/components/site/LocationCard";
 import { ServiceCard } from "@/components/site/ServiceCard";
 import { ReviewSummary } from "@/components/site/ReviewSummary";
 import { CTASection } from "@/components/site/CTASection";
-import { images, locationList, locations, siteConfig } from "@/config";
+import { images, locationList, services, siteConfig } from "@/config";
 import { pageMeta } from "@/lib/seo";
 
 export const Route = createFileRoute("/")({
@@ -27,7 +27,7 @@ const highlights = [
 ];
 
 function Index() {
-  const featuredServices = [...locations.cecina.services.slice(0, 2), ...locations.volterra.services.slice(0, 2)];
+  const featuredServices = services.slice(0, 4);
 
   return (
     <>

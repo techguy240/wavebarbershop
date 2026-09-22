@@ -7,6 +7,10 @@
 /** Modalità demo: mostra avvisi espliciti sulle integrazioni non ancora collegate. */
 export const DEMO_MODE = true;
 
+/** Link ufficiali dell'app WaveBarbershop: valorizzare appena disponibili. */
+export const GOOGLE_PLAY_URL = "";
+export const APP_STORE_URL = "";
+
 export const siteConfig = {
   name: "WaveBarbershop",
   shortName: "Wave",
@@ -21,17 +25,10 @@ export const siteConfig = {
   email: "",
 
   booking: {
-    /** URL del sistema di prenotazione ufficiale (app/gestionale): da configurare. */
-    url: "",
     /** Se true apre l'URL in una nuova scheda. */
     openInNewTab: true,
     /** Testo CTA principale. */
     label: "Prenota ora",
-    /** Deep link opzionali per sede (prevalgono su booking.url se valorizzati). */
-    perLocation: {
-      cecina: "",
-      volterra: "",
-    } as Record<string, string>,
   },
 
   social: {
@@ -67,15 +64,6 @@ export const siteConfig = {
 } as const;
 
 export type LocationId = "cecina" | "volterra";
-
-/** Restituisce l'URL di prenotazione risolto per una sede (o generale). */
-export function getBookingUrl(locationId?: LocationId): string {
-  if (locationId) {
-    const specific = siteConfig.booking.perLocation[locationId];
-    if (specific) return specific;
-  }
-  return siteConfig.booking.url;
-}
 
 export const isConfigured = (value: string | undefined | null): value is string =>
   typeof value === "string" && value.trim().length > 0;
