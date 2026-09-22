@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { supabase } from "@/integrations/supabase/client";
+import { setRemember } from "@/lib/remember";
 
 const loginSchema = z.object({
   email: z.string().trim().email("Email non valida").max(255),
