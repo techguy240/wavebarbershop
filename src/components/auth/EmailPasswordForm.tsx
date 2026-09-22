@@ -74,6 +74,14 @@ export function LoginForm() {
             <FormMessage />
           </FormItem>
         )} />
+        <FormField control={form.control} name="remember" render={({ field }) => (
+          <FormItem>
+            <label className="flex items-start gap-3 text-xs text-muted-foreground">
+              <input type="checkbox" className="mt-0.5 size-4 accent-[var(--gold)]" checked={!!field.value} onChange={(e) => field.onChange(e.target.checked)} />
+              <span>Acconsento ad essere ricordato su questo dispositivo</span>
+            </label>
+          </FormItem>
+        )} />
         <div className="flex justify-end">
           <button type="button" onClick={reset} className="text-xs text-muted-foreground underline-offset-4 hover:text-gold hover:underline">
             Password dimenticata?

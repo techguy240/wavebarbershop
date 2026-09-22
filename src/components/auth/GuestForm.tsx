@@ -7,6 +7,8 @@ import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { guestSchema, setGuestSession } from "@/lib/guest";
+import { setRemember } from "@/lib/remember";
+import { useState } from "react";
 
 /** Accesso ospite: nessun account, dati salvati solo nel browser per la sessione corrente. */
 export function GuestForm() {
