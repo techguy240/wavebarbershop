@@ -52,7 +52,11 @@ export function GuestForm() {
             <FormMessage />
           </FormItem>
         )} />
-        <p className="text-xs text-muted-foreground">I dati restano solo su questo dispositivo e vengono cancellati alla chiusura del browser.</p>
+        <label className="flex items-start gap-3 text-xs text-muted-foreground">
+          <input type="checkbox" className="mt-0.5 size-4 accent-[var(--gold)]" checked={remember} onChange={(e) => setRememberChoice(e.target.checked)} />
+          <span>Acconsento ad essere ricordato su questo dispositivo</span>
+        </label>
+        <p className="text-xs text-muted-foreground">I dati restano solo su questo dispositivo. Senza il consenso vengono cancellati alla chiusura del browser.</p>
         <Button type="submit" variant="outline-gold" size="lg" className="w-full">
           Continua come ospite
         </Button>

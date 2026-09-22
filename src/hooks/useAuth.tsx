@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import type { Session, User } from "@supabase/supabase-js";
 import { supabase } from "@/integrations/supabase/client";
 import { clearGuestSession, getGuestSession, type GuestSession } from "@/lib/guest";
+import { shouldForgetSession } from "@/lib/remember";
 
 export interface Profile {
   id: string;
