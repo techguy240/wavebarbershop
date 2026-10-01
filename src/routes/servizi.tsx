@@ -3,6 +3,7 @@ import { SectionHeading } from "@/components/site/SectionHeading";
 import { ServiceCard } from "@/components/site/ServiceCard";
 import { BookButton } from "@/components/site/BookButton";
 import { CTASection } from "@/components/site/CTASection";
+import { AssistantChat } from "@/components/site/AssistantChat";
 import { services } from "@/config";
 import { pageMeta } from "@/lib/seo";
 
@@ -36,6 +37,17 @@ function ServiziPage() {
         </div>
         <div className="mt-8">
           <BookButton size="lg" />
+        </div>
+      </section>
+
+      <section className="container-site py-16 sm:py-24" aria-labelledby="assistente-title">
+        <SectionHeading
+          eyebrow="Assistente"
+          title={<span id="assistente-title">Hai una domanda?</span>}
+          description="Chiedi informazioni su servizi, prezzi, orari e modalità di prenotazione."
+        />
+        <div className="mt-8 max-w-2xl">
+          <AssistantChat />
         </div>
       </section>
 
