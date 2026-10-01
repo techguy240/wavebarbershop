@@ -49,6 +49,10 @@ export function useAuth(): AuthState {
 
   useEffect(() => {
     let active = true;
+    // Nuova apertura del browser senza consenso "ricordami": chiude l'accesso locale.
+    const forget = shouldForgetSession()
+      ? (clearGuestSession(), supabase.auth.signOut({ scope: "local" }).catch(() => undefined))
+      : Promise.resolve();
     const { data: sub } = supabase.auth.onAuthStateChange((_event, s) => {
       if (!active) return;
       setSession(s);
@@ -56,7 +60,7 @@ export function useAuth(): AuthState {
       // Evita chiamate sincrone dentro il listener.
       setTimeout(() => void loadProfile(s?.user.id), 0);
     });
-    supabase.auth.getSession().then(({ data }) => {
+    forget.then(() => supabase.auth.getSession()).then(({ data }) => {
       if (!active) return;
       setSession(data.session);
       setLoading(false);

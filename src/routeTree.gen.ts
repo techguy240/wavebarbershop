@@ -22,6 +22,7 @@ import { Route as ResetPasswordRouteImport } from './routes/reset-password'
 import { Route as ServiziRouteImport } from './routes/servizi'
 import { Route as StaffRouteImport } from './routes/staff'
 import { Route as TerminiRouteImport } from './routes/termini'
+import { Route as ApiAssistenteRouteImport } from './routes/api/assistente'
 import { Route as SediIndexRouteImport } from './routes/sedi.index'
 import { Route as SediLocationIdRouteImport } from './routes/sedi.$locationId'
 
@@ -90,6 +91,11 @@ const TerminiRoute = TerminiRouteImport.update({
   path: '/termini',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiAssistenteRoute = ApiAssistenteRouteImport.update({
+  id: '/api/assistente',
+  path: '/api/assistente',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SediIndexRoute = SediIndexRouteImport.update({
   id: '/sedi/',
   path: '/sedi/',
@@ -115,6 +121,7 @@ export interface FileRoutesByFullPath {
   '/servizi': typeof ServiziRoute
   '/staff': typeof StaffRoute
   '/termini': typeof TerminiRoute
+  '/api/assistente': typeof ApiAssistenteRoute
   '/sedi/$locationId': typeof SediLocationIdRoute
   '/sedi/': typeof SediIndexRoute
 }
@@ -132,6 +139,7 @@ export interface FileRoutesByTo {
   '/servizi': typeof ServiziRoute
   '/staff': typeof StaffRoute
   '/termini': typeof TerminiRoute
+  '/api/assistente': typeof ApiAssistenteRoute
   '/sedi/$locationId': typeof SediLocationIdRoute
   '/sedi': typeof SediIndexRoute
 }
@@ -150,6 +158,7 @@ export interface FileRoutesById {
   '/servizi': typeof ServiziRoute
   '/staff': typeof StaffRoute
   '/termini': typeof TerminiRoute
+  '/api/assistente': typeof ApiAssistenteRoute
   '/sedi/$locationId': typeof SediLocationIdRoute
   '/sedi/': typeof SediIndexRoute
 }
@@ -169,6 +178,7 @@ export interface FileRouteTypes {
     | '/servizi'
     | '/staff'
     | '/termini'
+    | '/api/assistente'
     | '/sedi/$locationId'
     | '/sedi/'
   fileRoutesByTo: FileRoutesByTo
@@ -186,6 +196,7 @@ export interface FileRouteTypes {
     | '/servizi'
     | '/staff'
     | '/termini'
+    | '/api/assistente'
     | '/sedi/$locationId'
     | '/sedi'
   id:
@@ -203,6 +214,7 @@ export interface FileRouteTypes {
     | '/servizi'
     | '/staff'
     | '/termini'
+    | '/api/assistente'
     | '/sedi/$locationId'
     | '/sedi/'
   fileRoutesById: FileRoutesById
@@ -221,6 +233,7 @@ export interface RootRouteChildren {
   ServiziRoute: typeof ServiziRoute
   StaffRoute: typeof StaffRoute
   TerminiRoute: typeof TerminiRoute
+  ApiAssistenteRoute: typeof ApiAssistenteRoute
   SediLocationIdRoute: typeof SediLocationIdRoute
   SediIndexRoute: typeof SediIndexRoute
 }
@@ -318,6 +331,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TerminiRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/assistente': {
+      id: '/api/assistente'
+      path: '/api/assistente'
+      fullPath: '/api/assistente'
+      preLoaderRoute: typeof ApiAssistenteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sedi/': {
       id: '/sedi/'
       path: '/sedi'
@@ -349,6 +369,7 @@ const rootRouteChildren: RootRouteChildren = {
   ServiziRoute: ServiziRoute,
   StaffRoute: StaffRoute,
   TerminiRoute: TerminiRoute,
+  ApiAssistenteRoute: ApiAssistenteRoute,
   SediLocationIdRoute: SediLocationIdRoute,
   SediIndexRoute: SediIndexRoute,
 }
