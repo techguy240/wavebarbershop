@@ -7,8 +7,9 @@
 /** Modalità demo: mostra avvisi espliciti sulle integrazioni non ancora collegate. */
 export const DEMO_MODE = true;
 
-/** Link ufficiali dell'app WaveBarbershop: valorizzare appena disponibili. */
-export const GOOGLE_PLAY_URL = "";
+/** Link ufficiali dell'app WaveBarbershop. */
+export const GOOGLE_PLAY_URL = "https://play.google.com/store/apps/details?id=it.beppefasano.wave";
+/** L'app non esiste su App Store: lasciare vuoto. */
 export const APP_STORE_URL = "";
 
 export const siteConfig = {
